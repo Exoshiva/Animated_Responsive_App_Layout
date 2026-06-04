@@ -27,8 +27,7 @@ Nach Abschluss der Basis-Implementierung habe ich die Code-Architektur eigenstä
 Hier siehst du die Modernisierung der App nach dem Architektur-Umbau:
 
 
-<img src="assets/origin_home_2.png" width="300" alt="Mobile Ansicht">
-<img src="assets/refactor_2.png" width="300" alt="Mobile Ansicht">
+<img src="assets/origin_home_2.png" width="300" alt="Mobile Ansicht"><img src="assets/refactor_2.png" width="300" alt="Mobile Ansicht">
 
 ## 🛠 Tech Stack
 
