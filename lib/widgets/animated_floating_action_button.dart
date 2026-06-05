@@ -25,7 +25,6 @@ class AnimatedFloatingActionButton extends StatefulWidget {
 
 class _AnimatedFloatingActionButton 
 extends State<AnimatedFloatingActionButton> {
-  late final ColorScheme _colorScheme = Theme.of(context).colorScheme;
   late final Animation<double> _scaleAnimation = ScaleAnimation(
     parent: widget.animation
   );
@@ -35,6 +34,9 @@ extends State<AnimatedFloatingActionButton> {
 
   @override
   Widget build(BuildContext context) {
+
+      late final ColorScheme colorScheme = Theme.of(context).colorScheme;
+      
     return ScaleTransition(
       scale: _scaleAnimation,
       child: FloatingActionButton(
@@ -44,8 +46,8 @@ extends State<AnimatedFloatingActionButton> {
             Radius.circular(lerpDouble(30, 15, _shapeAnimation.value)!),
           ),
         ),
-        backgroundColor: _colorScheme.onTertiary,
-        foregroundColor: _colorScheme.onTertiaryContainer,
+        backgroundColor: colorScheme.onTertiary,
+        foregroundColor: colorScheme.onTertiaryContainer,
         onPressed: widget.onPressed,
         child: widget.child,
       )

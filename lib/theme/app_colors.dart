@@ -13,4 +13,7 @@ class AppColors {
   static const Color backgroundDark = Colors.black;
   static const Color textDark = Colors.white;
 
+  // Other Fixed-Colors
+  static const Color brandYellow = Color.fromARGB(255, 255, 208, 0);
+  
 }

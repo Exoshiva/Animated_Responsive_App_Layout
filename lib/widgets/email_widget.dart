@@ -27,21 +27,22 @@ class EmailWidget extends StatefulWidget {
 }
 // MARK: - Mail State Widget
 class _EmailWidgetState extends State<EmailWidget> {
-  late final ColorScheme _colorScheme = Theme.of(context).colorScheme;
-  late Color unselectedColor = Color.alphaBlend(
-    _colorScheme.primary.withAlpha(20),
-    _colorScheme.surface,
-  );
-
-  Color get _surfaceColor => switch (widget) {
-    EmailWidget(isPreview: false) => _colorScheme.surface,
-    EmailWidget(isSelected: true) => _colorScheme.primaryContainer,
-    _ => unselectedColor,
-  };
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+
+    final _colorScheme = Theme.of(context).colorScheme;
+    final unselectedColor = Color.alphaBlend(
+      _colorScheme.primary.withAlpha(20),
+      _colorScheme.surface,
+    );
+    Color _surfaceColor = switch (widget) {
+      EmailWidget(isPreview: false) => _colorScheme.surface,
+      EmailWidget(isSelected: true) => _colorScheme.primaryContainer,
+      _ => unselectedColor,
+    };
+    return
+     GestureDetector(
       onTap: widget.onSelected,
       child: Card(
         elevation: 0,
@@ -86,9 +87,7 @@ class EmailContent extends StatefulWidget {
 }
 
 class _EmailContentState extends State<EmailContent> {
-  late final ColorScheme _colorScheme = Theme.of(context).colorScheme;
-  late final TextTheme _textTheme = Theme.of(context).textTheme;
-
+  
   Widget get contentSpacer => SizedBox(height: widget.isThreaded ? 20 : 2);
 
   String get lastActiveLabel {
@@ -106,16 +105,20 @@ class _EmailContentState extends State<EmailContent> {
     };
   }
 
-  TextStyle? get contentTextStyle => switch (widget) {
-    EmailContent(isThreaded: true) => _textTheme.bodyLarge,
-    EmailContent(isSelected: true) => _textTheme.bodyMedium?.copyWith(
-      color: _colorScheme.onPrimaryContainer,
-    ),
-    _ => _textTheme.bodyMedium?.copyWith(color: _colorScheme.onSurfaceVariant),
-  };
 
-  @override
+@override
   Widget build(BuildContext context) {
+    
+    final _colorScheme = Theme.of(context).colorScheme;
+    final _textTheme = Theme.of(context).textTheme;
+    final contentTextStyle = switch (widget) {
+      EmailContent(isThreaded: true) => _textTheme.bodyLarge,
+      EmailContent(isSelected: true) => _textTheme.bodyMedium?.copyWith(
+        color: _colorScheme.onPrimaryContainer,
+      ),
+      _ => _textTheme.bodyMedium?.copyWith(color: _colorScheme.onSurfaceVariant),
+    };
+
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -235,11 +238,13 @@ class EmailHeadline extends StatefulWidget {
 }
 
 class _EmailHeadlineState extends State<EmailHeadline> {
-  late final TextTheme _textTheme = Theme.of(context).textTheme;
-  late final ColorScheme _colorScheme = Theme.of(context).colorScheme;
 
   @override
   Widget build(BuildContext context) {
+
+    late final TextTheme _textTheme = Theme.of(context).textTheme;
+    late final ColorScheme _colorScheme = Theme.of(context).colorScheme;
+
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
@@ -321,10 +326,12 @@ class EmailReplyOptions extends StatefulWidget {
 }
 
 class _EmailReplyOptionsState extends State<EmailReplyOptions> {
-  late final ColorScheme _colorScheme = Theme.of(context).colorScheme;
 
   @override
   Widget build(BuildContext context) {
+
+    late final ColorScheme _colorScheme = Theme.of(context).colorScheme;
+
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth < 100) {

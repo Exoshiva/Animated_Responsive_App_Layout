@@ -13,6 +13,7 @@ class DisappearingNavigationRail extends StatelessWidget {
     required this.railFabAnimation,
     required this.backgroundColor,
     required this.selectedIndex,
+    required this.onThemeToggle,
     this.onDestinationSelected,
   });
 
@@ -21,6 +22,7 @@ class DisappearingNavigationRail extends StatelessWidget {
   final Color backgroundColor;
   final int selectedIndex;
   final ValueChanged<int>? onDestinationSelected;
+  final VoidCallback onThemeToggle;
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +43,27 @@ class DisappearingNavigationRail extends StatelessWidget {
             elevation: 0,
             onPressed: () {},
             child: const Icon(Icons.add),
-          ),
-        ],
-      ),
-      groupAlignment: -0.85,
-      destinations: destinations.map((d) {
-        return NavigationRailDestination(
-          icon: Icon(d.icon),
-          label: Text(d.label),
-        );
-      }).toList(),
-    )
+),
+            const SizedBox(height: 16),
+// MARK: - Dark/Light Button
+            IconButton(
+              icon: Icon(
+                Theme.of(context).brightness == Brightness.light
+                    ? Icons.dark_mode
+                    : Icons.light_mode,
+              ),
+              onPressed: onThemeToggle, 
+            ),
+          ],
+        ),
+        groupAlignment: -0.85,
+        destinations: destinations.map((d) {
+          return NavigationRailDestination(
+            icon: Icon(d.icon),
+            label: Text(d.label),
+          );
+        }).toList(),
+      )
     );
   }
 }

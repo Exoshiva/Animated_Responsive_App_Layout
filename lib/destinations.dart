@@ -11,4 +11,6 @@ const List<Destination> destinations = <Destination> [
   Destination(Icons.article, 'Articles'),
   Destination(Icons.messenger, 'Messages'),
   Destination(Icons.group, 'Groups'),
+  
 ];
+

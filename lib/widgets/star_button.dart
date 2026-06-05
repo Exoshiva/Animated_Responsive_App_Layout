@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '/theme/app_colors.dart';
+
 // MARK: -Star Button Config
 class StarButton extends StatefulWidget {
   const StarButton({super.key});
@@ -9,12 +11,11 @@ class StarButton extends StatefulWidget {
 
 class _StarButtonState extends State<StarButton> {
   bool state = false;
-  late final ColorScheme _colorScheme = Theme.of(context).colorScheme;
+  //late final ColorScheme 
 
   Icon get icon {
     final IconData iconData = state ? Icons.star : Icons.star_outline;
-
-    return Icon(iconData, color: const Color.fromARGB(255, 255, 208, 0), size: 20);
+    return Icon(iconData, color: AppColors.brandYellow, size: 20);
   }
 
   void _toggle() {
@@ -27,6 +28,8 @@ class _StarButtonState extends State<StarButton> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return AnimatedRotation(
       turns: turns,
       curve: Curves.decelerate,
@@ -34,7 +37,7 @@ class _StarButtonState extends State<StarButton> {
       child: FloatingActionButton(
         elevation: 0,
         shape: const CircleBorder(),
-        backgroundColor: _colorScheme.surface,
+        backgroundColor: colorScheme.surface,
         onPressed: () => _toggle(),
         child: Padding(padding: const EdgeInsets.all(10.0), child: icon),
       ),

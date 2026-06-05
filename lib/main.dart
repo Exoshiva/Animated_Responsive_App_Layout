@@ -67,11 +67,7 @@ class Feed extends StatefulWidget {
 
 // MARK: Feed State & Layout
 class _FeedState extends State<Feed> with SingleTickerProviderStateMixin {
-  late final _colorScheme = Theme.of(context).colorScheme;
-  late final _backgroundColor = Color.alphaBlend(
-    _colorScheme.primary.withAlpha(36),
-    _colorScheme.surface,
-  );
+
 
   late final _controller = AnimationController(
     duration: const Duration(milliseconds: 1000),
@@ -119,6 +115,11 @@ class _FeedState extends State<Feed> with SingleTickerProviderStateMixin {
 // MARK: - Layout Config
   @override
   Widget build(BuildContext context) {
+    late final colorScheme = Theme.of(context).colorScheme;
+    late final backgroundColor = Color.alphaBlend(
+    colorScheme.primary.withAlpha(36),
+    colorScheme.surface,
+  );
 
     return AnimatedBuilder(
       animation: _controller, 
@@ -130,7 +131,8 @@ class _FeedState extends State<Feed> with SingleTickerProviderStateMixin {
                 railAnimation: _railAnimation,
                 railFabAnimation: _railFabAnimation,
                 selectedIndex: selectedIndex,
-                backgroundColor: _backgroundColor, 
+                backgroundColor: backgroundColor, 
+                onThemeToggle: widget.onThemeToggle, // Dark/Light Button
                 onDestinationSelected: (index) {
                   setState(() {
                     selectedIndex = index;
@@ -139,7 +141,7 @@ class _FeedState extends State<Feed> with SingleTickerProviderStateMixin {
               ),
             Expanded(
               child: Container(
-                color: _backgroundColor,
+                color: backgroundColor,
 
                   child: ListDetailTransition(
                     animation: _railAnimation,  
