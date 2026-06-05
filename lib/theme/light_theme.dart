@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 ThemeData lightTheme = ThemeData(
+  useMaterial3: true,
   brightness: Brightness.light,
-  primaryColor: AppColors.primaryLight,
   scaffoldBackgroundColor: AppColors.backgroundLight,
-  appBarTheme: AppBarTheme(
-    backgroundColor:AppColors.primaryLight,
-    foregroundColor: AppColors.textLight, 
+  colorScheme: const ColorScheme.light(
+    primary: AppColors.primaryLight,
+    surface: AppColors.surfaceLight,
+    onSurface: AppColors.onSurfaceLight,
+    onSurfaceVariant: AppColors.onSurfaceVariantLight
   ),
-  textTheme: const TextTheme(
-    bodyLarge: TextStyle(color: AppColors.textLight),
-    bodyMedium: TextStyle(color: AppColors.textLight),
-  ),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: AppColors.backgroundLight,
+    foregroundColor: AppColors.onSurfaceLight,
+  )
 );
