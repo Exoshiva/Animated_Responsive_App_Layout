@@ -46,8 +46,8 @@ extends State<AnimatedFloatingActionButton> {
             Radius.circular(lerpDouble(30, 15, _shapeAnimation.value)!),
           ),
         ),
-        backgroundColor: colorScheme.onTertiary,
-        foregroundColor: colorScheme.onTertiaryContainer,
+        backgroundColor: colorScheme.primary,
+        foregroundColor: colorScheme.surface,
         onPressed: widget.onPressed,
         child: widget.child,
       )
